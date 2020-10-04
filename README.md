@@ -3,7 +3,7 @@
 ## Обзор:
 * Описание
 * Используемые технологии
-* Ссылка на проект
+<!-- * Ссылка на проект -->
 
 ## Описание:
 
@@ -32,13 +32,10 @@
   - хуки: useState, useEffect;
   - использован декларативный подход в написании кода;
 
-## Ссылка на проект:
-
-=> (*ВРЕМЕННО НЕ ДОСТУПНО*) <=
-
+<!-- ## Ссылка на проект: -->
 <!-- * [Ссылка на проектную работу "Место"](https://kkucher.github.io/mesto/) -->
 
-# Инструкции:
+# Additional Information:
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
