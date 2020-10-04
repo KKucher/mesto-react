@@ -1,7 +1,7 @@
 import React from "react";
 
 function Cards({ link, name, likes, onCardClick }) {
-  function handleClick() {
+  function handleCardClick() {
     onCardClick({ link: link, name: name });
   }
 
@@ -11,7 +11,7 @@ function Cards({ link, name, likes, onCardClick }) {
         src={link}
         alt={name}
         className="photo-grid__image"
-        onClick={handleClick}
+        onClick={handleCardClick}
       />
       <div className="photo-grid__description">
         <h2 className="photo-grid__title">{name}</h2>

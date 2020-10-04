@@ -7,14 +7,10 @@ import PopupWithForm from "./PopupWithForm";
 import ImagePopup from "./ImagePopup";
 
 function App() {
-  const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(
-    false
-  );
+  const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(false);
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false);
-  const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(
-    false
-  );
-  const [selectedCard, setSelectedCard] = React.useState({ isOpen: false });
+  const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(false);
+  const [selectedCard, setSelectedCard] = React.useState(false);
 
   function handleEditProfileClick() {
     setIsEditProfilePopupOpen(true);
@@ -40,7 +36,7 @@ function App() {
     setIsEditProfilePopupOpen(false);
     setIsAddPlacePopupOpen(false);
     setIsEditAvatarPopupOpen(false);
-    setSelectedCard({ isOpen: false });
+    setSelectedCard(false);
   }
 
   return (
@@ -79,7 +75,7 @@ function App() {
           name="description"
           type="text"
           placeholder="Занятие"
-          autocomplete="off"
+          autoComplete="off"
           maxLength="200"
           minLength="2"
           className="popup__input popup__input_type_info"
@@ -113,7 +109,7 @@ function App() {
           name="link"
           type="url"
           placeholder="Ссылка на картинку"
-          autocomplete="off"
+          autoComplete="off"
           className="popup__input popup__input_type_info popup__input_type_link"
           id="link"
           required
@@ -134,7 +130,7 @@ function App() {
           name="link"
           type="url"
           placeholder="Ссылка на картинку"
-          autocomplete="off"
+          autoComplete="off"
           className="popup__input popup__input_type_info popup__input_type_link"
           id="link-input"
           required
@@ -154,9 +150,7 @@ function App() {
 
       {/* Img wiev popup */}
       <ImagePopup
-        link={selectedCard.link}
-        title={selectedCard.title}
-        isOpen={selectedCard.isOpen}
+        card={selectedCard}
         onClose={closeAllPopups}
       />
       {/* *********END********* */}
