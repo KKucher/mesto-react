@@ -151,6 +151,7 @@ function App() {
       {/* Img wiev popup */}
       <ImagePopup
         card={selectedCard}
+        isOpen={selectedCard.isOpen}
         onClose={closeAllPopups}
       />
       {/* *********END********* */}

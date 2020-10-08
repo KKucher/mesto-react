@@ -14,7 +14,7 @@ function Main({ onEditProfile, onAddPlace, onEditAvatar, onCardClick }) {
     Promise.all(promises)
       .then((results) => {
         setupUser(results[0]);
-        setupCards(results[1]);
+        setCards(results[1]);
       })
       .catch((err) => console.log(`Error ${err}`));
 
@@ -22,18 +22,6 @@ function Main({ onEditProfile, onAddPlace, onEditAvatar, onCardClick }) {
       setUserName(user.name);
       setUserDescription(user.about);
       setUserAvatar(user.avatar);
-    }
-
-    function setupCards(cards) {
-      setCards(
-        cards.map((item) => ({
-          id: item._id,
-          link: item.link,
-          name: item.name,
-          owner: item.owner,
-          likes: item.likes,
-        }))
-      );
     }
   }, []);
 
