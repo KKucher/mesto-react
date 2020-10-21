@@ -8,6 +8,7 @@
 @import url(./blocks/photo-grid/photo-grid.css);
 @import url(./blocks/photo-grid/__btn/photo-grid__btn.css);
 @import url(./blocks/photo-grid/__btn/_action/photo-grid__btn_action_del.css);
+@import url(./blocks/photo-grid/__btn/_action/photo-grid__btn_action_del_hidden.css);
 @import url(./blocks/photo-grid/__btn/_action/photo-grid__btn_action_like.css);
 @import url(./blocks/photo-grid/__btn/_clicked/photo-grid__btn_clicked.css);
 @import url(./blocks/photo-grid/__card/photo-grid__card.css);

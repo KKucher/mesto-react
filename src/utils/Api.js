@@ -44,7 +44,7 @@ class Api {
   //***************************************************************************
   // Редактирование профиля:
 
-  editProfile({ name, description }) {
+  editProfile({ name, about }) {
     return fetch(`${this._token}/users/me`, {
       method: "PATCH",
       headers: {
@@ -53,7 +53,7 @@ class Api {
       },
       body: JSON.stringify({
         name: name,
-        about: description,
+        about: about,
       }),
     }).then((res) => {
       if (res.ok) {
@@ -88,30 +88,11 @@ class Api {
   }
 
   //***************************************************************************
-  // Добавление лайка:
+  // Добавление/удаление лайка:
 
-  addLike(cardId) {
+  changeLikeDislikeStatus(cardId, isLiked) {
     return fetch(`${this._token}/cards/likes/${cardId}`, {
-      method: "PUT",
-      headers: {
-        authorization: this._authorization,
-        "Content-Type": this._contentType,
-      },
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-
-      return Promise.reject(`Ошибка: ${res.status}`);
-    });
-  }
-
-  //***************************************************************************
-  // Удаление лайка:
-
-  deleteLike(cardId) {
-    return fetch(`${this._token}/cards/likes/${cardId}`, {
-      method: "DELETE",
+      method: isLiked ? "PUT" : "DELETE",
       headers: {
         authorization: this._authorization,
         "Content-Type": this._contentType,
@@ -147,7 +128,7 @@ class Api {
   //***************************************************************************
   // Обновление аватара пользователя:
 
-  editAvatar({ link }) {
+  editAvatar({ avatar }) {
     return fetch(`${this._token}/users/me/avatar`, {
       method: "PATCH",
       headers: {
@@ -155,7 +136,7 @@ class Api {
         "Content-Type": this._contentType,
       },
       body: JSON.stringify({
-        avatar: `${link}`,
+        avatar: `${avatar}`,
       }),
     }).then((res) => {
       if (res.ok) {
