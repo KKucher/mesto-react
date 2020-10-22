@@ -8,7 +8,8 @@ import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import EditProfilePopup from "./EditProfilePopup";
 import EditAvatarPopup from "./EditAvatarPopup";
 import AddPlacePopup from "./AddPlacePopup";
-import DeleteCardPopup from './DeleteCardPopup';
+import DeleteCardPopup from "./DeleteCardPopup";
+import PopupIsClose from "./PopupIsClose";
 
 function App() {
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(false);
@@ -19,7 +20,7 @@ function App() {
   const [cards, setCards] = React.useState([]);
   const [isLoading, setLoading] = React.useState(false);
   const [isDeleteCardPopupOpen, setDeleteCardPopupOpen] = React.useState(false);
-  const [cardDelete, setCardDelete] = React.useState({})
+  const [cardDelete, setCardDelete] = React.useState({});
 
   // Обработчики событий (по клику):
   //***************************************************************************
@@ -45,7 +46,7 @@ function App() {
 
   function handleDeleteCardClick(card) {
     setDeleteCardPopupOpen(true);
-    setCardDelete(card)
+    setCardDelete(card);
   }
 
   // Закрытие попапов:
@@ -132,11 +133,11 @@ function App() {
     const promises = [api.getUserInfo(), api.getInitialCards()];
 
     Promise.all(promises)
-    .then(([ user, cards ]) => {
-      setCurrentUser(user);
-      setCards(cards);
-    })
-    .catch(err => console.log(`Error ${err}`));
+      .then(([user, cards]) => {
+        setCurrentUser(user);
+        setCards(cards);
+      })
+      .catch((err) => console.log(`Error ${err}`));
   }, []);
 
   return (
@@ -185,14 +186,16 @@ function App() {
           onClose={closeAllPopups}
           onCardDelete={handleCardDelete}
           isLoading={isLoading}
-         />
+        />
 
         {/* Img wiev popup */}
-        <ImagePopup
-          card={selectedCard}
-          isOpen={selectedCard.isOpen}
-          onClose={closeAllPopups}
-        />
+        <PopupIsClose>
+          <ImagePopup
+            card={selectedCard}
+            isOpen={selectedCard.isOpen}
+            onClose={closeAllPopups}
+          />
+        </PopupIsClose>
 
         <Footer />
       </div>
