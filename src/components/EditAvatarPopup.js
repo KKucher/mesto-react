@@ -5,13 +5,19 @@ function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar, isLoading }) {
   const avatarRef = React.useRef();
   const submitButtonText = isLoading ? "Сохранение..." : "Сохранить";
 
+  // Сброс полей ввода:
+  //***************************************************************************
+  React.useEffect(() => {
+    avatarRef.current.value = "";
+  }, [isOpen]);
+  //***************************************************************************
+
   function handleSubmit(e) {
     e.preventDefault();
 
     onUpdateAvatar({
       avatar: avatarRef.current.value,
     });
-    e.target.reset();
   }
 
   return (

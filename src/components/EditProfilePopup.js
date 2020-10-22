@@ -23,7 +23,6 @@ function EditProfilePopup({ isOpen, onClose, onUpdateUser, isLoading }) {
       name,
       about: description,
     });
-    e.target.reset();
   }
 
   React.useEffect(() => {

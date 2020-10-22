@@ -6,6 +6,14 @@ function AddPlacePopup({ isOpen, onClose, onAddPlace, isLoading }) {
   const [link, setLink] = React.useState("");
   const submitButtonText = isLoading ? "Сохранение..." : "Сохранить";
 
+  // Сброс полей ввода:
+  //***************************************************************************
+  React.useEffect(() => {
+    setName("");
+    setLink("");
+  }, [isOpen]);
+  //***************************************************************************
+
   function handleNameChange(e) {
     setName(e.target.value);
   }
@@ -17,7 +25,6 @@ function AddPlacePopup({ isOpen, onClose, onAddPlace, isLoading }) {
   function handleSubmit(e) {
     e.preventDefault();
     onAddPlace({ name, link });
-    e.target.reset();
   }
 
   return (

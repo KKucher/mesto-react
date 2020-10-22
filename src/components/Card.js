@@ -1,7 +1,7 @@
 import React from "react";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
-function Cards({
+function Card({
   _id,
   link,
   name,
@@ -76,4 +76,4 @@ function Cards({
   );
 }
 
-export default Cards;
+export default Card;

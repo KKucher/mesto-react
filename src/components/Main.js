@@ -1,5 +1,5 @@
 import React from "react";
-import Cards from "./Cards.js";
+import Card from "./Card.js";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
 function Main({
@@ -41,7 +41,7 @@ function Main({
       <section className="photo-grid">
         <ul className="photo-grid__list">
           {cards.map((props) => (
-            <Cards
+            <Card
               key={props._id}
               _id={props._id}
               owner={props.owner}

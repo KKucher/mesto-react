@@ -1,5 +1,4 @@
 import React from "react";
-import "../index.css";
 import Header from "./Header";
 import Footer from "./Footer";
 import Main from "./Main";
@@ -15,12 +14,12 @@ function App() {
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(false);
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false);
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(false);
-  const [selectedCard, setSelectedCard] = React.useState(false);
+  const [selectedCard, setSelectedCard] = React.useState({});
   const [currentUser, setCurrentUser] = React.useState({});
   const [cards, setCards] = React.useState([]);
   const [isLoading, setLoading] = React.useState(false);
   const [isDeleteCardPopupOpen, setDeleteCardPopupOpen] = React.useState(false);
-  const [cardDelete, setCardDelete] = React.useState('')
+  const [cardDelete, setCardDelete] = React.useState({})
 
   // Обработчики событий (по клику):
   //***************************************************************************
@@ -133,25 +132,12 @@ function App() {
     const promises = [api.getUserInfo(), api.getInitialCards()];
 
     Promise.all(promises)
-      .then((results) => {
-        setCurrentUser(results[0]);
-        setupCards(results[1]);
-      })
-      .catch((err) => console.log(`Error ${err}`));
+    .then(([ user, cards ]) => {
+      setCurrentUser(user);
+      setCards(cards);
+    })
+    .catch(err => console.log(`Error ${err}`));
   }, []);
-
-  //***************************************************************************
-  function setupCards(cards) {
-    setCards(
-      cards.map((item) => ({
-        _id: item._id,
-        link: item.link,
-        name: item.name,
-        owner: item.owner,
-        likes: item.likes,
-      }))
-    );
-  }
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
